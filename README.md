@@ -1,6 +1,6 @@
 # SringBoot+Vue脚手架
 
-## Copy from 程序源青戈
+## Copy from 程序员青戈
 
 ## B站视频
 
