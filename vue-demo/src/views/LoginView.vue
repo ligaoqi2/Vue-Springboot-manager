@@ -55,6 +55,9 @@ export default {
     Avatar,
     Lock,
   },
+  created() {
+    sessionStorage.removeItem("user")
+  },
   methods: {
     login(){
       // 合法才发送请求
@@ -67,6 +70,8 @@ export default {
                 type: 'success',
                 message: '登录成功'
               })
+              sessionStorage.setItem("user", JSON.stringify(res.data))  // 缓存用户信息
+              console.log(res.data)
               this.$router.push('/')  // 登录成功页面跳转
             }else {
               this.$message({

@@ -28,10 +28,10 @@ public class UserController {
         if(res == null){
             return Result.error("-1", "用户名或密码错误");
         }
-        return Result.success();
+        return Result.success(res);
     }
 
-    // 登录
+    // 注册
     @PostMapping("/register")
     public Result<?> register(@RequestBody User user) {
         User res = userMapper.selectOne(Wrappers.<User>lambdaQuery()
@@ -44,6 +44,12 @@ public class UserController {
         }
         userMapper.insert(user);
         return Result.success();
+    }
+
+    // 个人信息
+    @GetMapping("/{id}")
+    public Result<?> getById(@PathVariable Long id) {
+        return Result.success(userMapper.selectById(id));
     }
 
     // 新增

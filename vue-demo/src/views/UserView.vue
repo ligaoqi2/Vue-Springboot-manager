@@ -4,8 +4,8 @@
     <!--    功能区域-->
     <div style="margin: 10px 0">
       <el-button type="primary" @click="add">新增</el-button>
-      <el-button type="primary">导入</el-button>
-      <el-button type="primary">导出</el-button>
+      <!--      <el-button type="primary">导入</el-button>-->
+      <!--      <el-button type="primary">导出</el-button>-->
     </div>
 
     <!--    搜索区域-->
@@ -96,7 +96,7 @@
 import request from "@/utils/request";
 
 export default {
-  name: 'HomeView',
+  name: 'UserView',
   components: {},
 
   data() {
@@ -173,6 +173,8 @@ export default {
             type: "success",
             message: "新增成功"
           })
+          this.load()     //新增后重新加载界面
+          this.dialogVisible = false
         })
       }
     },

@@ -1,8 +1,7 @@
 package com.example.springbootdemo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.springbootdemo.entity.User;
+import com.example.springbootdemo.entity.Book;
 
-public interface UserMapper extends BaseMapper<User> {
-
+public interface BookMapper extends BaseMapper<Book> {
 }

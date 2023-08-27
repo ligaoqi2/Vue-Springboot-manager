@@ -1,21 +1,34 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/UserView.vue'
 import Layout from "@/layout/Layout.vue";
 import LoginView from "@/views/LoginView.vue";
 import RegisterView from "@/views/RegisterView.vue";
+import PersonView from "@/views/PersonView.vue";
+import UserView from "@/views/UserView.vue";
+import BookView from "@/views/BookView.vue";
 
 const routes = [
   {
     path: '/',
     name: 'Layout',
     component: Layout,
-    redirect: "/home",
+    redirect: "/user",
     children: [
       {
-        path: 'home',
-        name: 'HomeView',
-        component: HomeView,
-      }
+        path: 'user',
+        name: 'UserView',
+        component: UserView,
+      },
+      {
+        path: '/person',
+        name: 'Person',
+        component: PersonView
+      },
+      {
+        path: '/book',
+        name: 'Book',
+        component: BookView
+      },
     ]
   },
 
@@ -28,7 +41,7 @@ const routes = [
     path: '/register',
     name: 'register',
     component: RegisterView
-  }
+  },
 ]
 
 const router = createRouter({

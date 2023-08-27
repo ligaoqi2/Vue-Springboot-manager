@@ -9,14 +9,11 @@
     <div style="width: 100px; padding: 20px">
       <el-dropdown>
     <span class="el-dropdown-link">
-      张三
-      <el-icon class="el-icon--right">
-        <arrow-down/>
-      </el-icon>
+      {{user.nickName}}
     </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>个人信息</el-dropdown-item>
+            <el-dropdown-item @click="$router.push('/person')">个人信息</el-dropdown-item>
             <el-dropdown-item @click="$router.push('/login')">退出系统</el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -28,7 +25,16 @@
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+  data() {
+    return {
+      user: {}
+    }
+  },
+  created() {
+    let str = sessionStorage.getItem("user") || "{}"
+    this.user = JSON.parse(str)
+  }
 }
 </script>
 
