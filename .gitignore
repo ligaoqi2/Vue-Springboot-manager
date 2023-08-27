@@ -1,0 +1,17 @@
+./.idea/
+
+# Springboot
+./springbootdemo/.mvn/
+./springbootdemo/target/
+./springbootdemo/HELP.md
+./springbootdemo/mvnw
+./springbootdemo/mvnw.cmd
+./springbootdemo/.gitignore
+
+#Vue
+./vue-demo/node_modules/
+./vue-demo/.gitignore
+./vue-demo/jsconfig.json
+./vue-demo/package.json
+./vue-demo/package-lock.json
+./vue-demo/README.md
