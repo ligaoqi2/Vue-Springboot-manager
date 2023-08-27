@@ -21,6 +21,15 @@
       <el-table-column prop="price" label="单价"/>
       <el-table-column prop="author" label="作者"/>
       <el-table-column prop="createTime" label="出版时间"/>
+      <el-table-column prop="cover" label="封面">
+        <template #default="scope">
+          <el-image
+              style="width: 100px; height: 100px"
+              :src="scope.row.cover"
+              :preview-src-list="[scope.row.cover]"
+          />
+        </template>
+      </el-table-column>
       <!--      数据库中为下划线的会在前端转换为驼峰, mybatis框架做的-->
 
       <el-table-column fixed="right" width="150" label="操作">
@@ -71,6 +80,12 @@
           <el-date-picker v-model="form.createTime" value-format="YYYY-MM-DD" type="date" style="width: 80%" clearable/>
         </el-form-item>
 
+        <el-form-item label="封面">
+          <el-upload ref="upload" action="http://localhost:8085/files/upload" :on-success="filesUploadSuccess">
+            <el-button type="primary">点击上传</el-button>
+          </el-upload>
+        </el-form-item>
+
       </el-form>
       <template #footer>
       <span class="dialog-footer">
@@ -119,6 +134,12 @@ export default {
   },
 
   methods: {
+    //文件上传成功
+    filesUploadSuccess(res) {
+      console.log(res)
+      this.form.cover = res.data
+    },
+
     // 查
     load() {
       request.get("/book", {
@@ -139,6 +160,7 @@ export default {
     add() {
       this.dialogVisible = true;
       this.form = {};
+      this.$refs['upload'].clearFiles()       //清除历史文件列表
     },
     save() {
       if (this.form.id) {
@@ -177,6 +199,9 @@ export default {
     handleEdit(row) {
       this.form = JSON.parse(JSON.stringify(row))
       this.dialogVisible = true;
+      this.$nextTick(()=>{                    //nextTick 解决调用时元素不存在的错误
+        this.$refs['upload'].clearFiles();        //处理未来元素的方法
+      })
     },
 
     // 删
