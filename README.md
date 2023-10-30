@@ -1,6 +1,4 @@
-# SringBoot+Vue脚手架
-
-## Copy from 程序员青戈
+# SpringBoot+Vue脚手架
 
 ## B站视频
 
